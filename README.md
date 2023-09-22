@@ -1,6 +1,6 @@
 # Surfing Website
 
-![image](.\Web capture_22-9-2023_22359_.jpeg)
+![image](./Web%20capture_22-9-2023_22359_.jpeg)
 Welcome to our amazing surfing website! 🌊🏄‍♂️🌊
 
 Our website is a paradise for surfers, designed to provide you with an addictive and interactive experience. 🌴🌊🏄‍♂️
