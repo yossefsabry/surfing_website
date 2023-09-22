@@ -1,0 +1,147 @@
+* {
+  padding: 0;
+  margin: 0;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #fdfdfd;
+  width: 100vw;
+  overflow-x: hidden;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+a {
+  text-decoration: none;
+}
+h2 {
+  padding: 0;
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+}
+.container {
+  padding: 1rem 5rem;
+}
+@media (max-width: 776px) {
+  .container {
+    padding: 1rem;
+  }
+}
+/* toggle menu */
+.toggle-menu {
+  position: relative;
+  cursor: pointer;
+  width: 60px;
+  height: 30px;
+  text-align: center;
+  display: none;
+}
+@media (max-width: 800px) {
+  .toggle-menu {
+    display: block;
+  }
+}
+.toggle-menu span {
+  width: 30px;
+  height: 2.7px;
+  background-color: #6db1f1;
+}
+.toggle-menu span::after {
+  content: "";
+  position: absolute;
+  width: 70%;
+  height: 2.7px;
+  background-color: #6db1f1;
+  bottom: -8.4px;
+  transition: all 0.4s;
+}
+.toggle-menu span::before {
+  content: "";
+  position: absolute;
+  width: 70%;
+  height: 2.7px;
+  background-color: #6db1f1;
+  bottom: 8.4px;
+  transition: all 0.4s;
+}
+.toggle-menu:hover.toggle-menu span::after,
+.toggle-menu:hover.toggle-menu span::before {
+  width: 100%;
+}
+
+.toggle-menu:focus.toggle-menu span::after,
+.toggle-menu:focus.toggle-menu span::before {
+  width: 100%;
+}
+
+/* start components */
+.components_one {
+  font-size: calc(16px + 2.3vw);
+  padding: 20px 0;
+  position: relative;
+}
+.components_one::after {
+  position: absolute;
+  content: "01";
+  color: #efefef;
+  font-size: calc(40px + 4vw);
+  top: -40px;
+  font-family: system-ui;
+  font-weight: bold;
+  left: 0;
+  z-index: -1;
+}
+.components_one::before {
+  position: absolute;
+  content: "";
+  background-color: #6db1f1;
+  bottom: 20px;
+  width: 40px;
+  height: 3px;
+  left: 0;
+}
+@media (max-width: 1370px) {
+  .components_one {
+    width: fit-content;
+    margin: 0 auto;
+  }
+}
+
+/* animation for the box "sections" */
+@media (min-width: 900px) {
+  .box {
+    transform: translateX(400%);
+    transition: all 0.4s ease;
+  }
+  .box:nth-child(even) {
+    transform: translateX(-400%);
+  }
+  .box.show {
+    transform: translateX(0);
+  }
+  .top {
+    font-size: 20px;
+    color: white;
+    background-color: #6db1f1;
+    border-radius: 50%;
+    padding: 12px 15px;
+    position: fixed;
+    right: 2rem;
+    bottom: 2rem;
+    cursor: pointer;
+    z-index: 100;
+    display: none;
+    transition: all 0.4s;
+  }
+  .top:hover {
+    color: white;
+    background-color: #0b0c11;
+  }
+}
