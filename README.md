@@ -1,6 +1,6 @@
 # Surfing Website
 
-![image](/surfing_website/Web%20capture_22-9-2023_22359_.jpeg)
+![image]/Web%20capture_22-9-2023_22359_.jpeg)
 
 Welcome to our amazing surfing website! 🌊🏄‍♂️🌊
 
