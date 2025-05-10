@@ -28,6 +28,7 @@ btnTop.onclick = () => {
     behavior: "smooth",
   });
 };
+
 // show the box for sections
 const boxs = document.querySelectorAll(".box");
 

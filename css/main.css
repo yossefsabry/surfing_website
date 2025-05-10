@@ -295,6 +295,7 @@ header span {
   position: relative;
   transform: translate(-60px, 60px);
 }
+.about .container .imgs .img-2 iframe ,
 .about .container .imgs .img-2 img {
   width: calc(100% + 60px);
 }
@@ -728,3 +729,75 @@ footer ul li a {
 footer ul li a:hover {
   color: var(--second-text);
 }
+/*end footer*/
+
+/*start contact page*/
+/* Form styles */
+.form-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 0 20px 60px;
+    padding-top: 80px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    color: #666;
+}
+
+input, textarea {
+    padding: 12px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    background-color: white;
+    transition: border 0.3s;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: #999;
+}
+
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+button {
+    color: white;
+    background: none;
+    border: none;
+    padding: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 14px;
+    cursor: pointer;
+    outline: none;
+}
+
+.form-container button {
+    color: var(--header-text);
+    font-size: calc(13px + 1vw);
+    padding: 20px;
+    border-bottom: 2px solid var(--second-text);
+    transition: var(--main-transition);
+}
+.form-container button:hover {
+    color: var(--second-text);
+}
+
+/*end contact page*/
