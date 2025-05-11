@@ -71,13 +71,20 @@ let menu = document.getElementById("menu");
 let btn = document.getElementById("toggle-menu");
 const body = document.querySelector("body");
 
+
 btn.onclick = () => {
-    if (menu.style.display === "block") {
-        menu.style.display = "none";
-    } else {
-        menu.style.display = "block";
-    }
+    menu.classList.toggle("visible");
 };
+
+// btn.onclick = () => {
+//     if (menu.style.visibility == "hidden") {
+//         menu.style.visibility = "visible";
+//         // menu.style.transform = "scale(1);";
+//     } else {
+//         menu.style.visibility = "hidden";
+//         // menu.style.transform = "scale(0);";
+//     }
+// };
 
 // show cursor and go to top
 
