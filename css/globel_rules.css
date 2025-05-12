@@ -108,6 +108,9 @@ ul {
     left: 0;
 }
 @media (max-width: 1370px) {
+    body {
+        overflow-x: hidden !important;
+    }
     .components_one {
         width: fit-content;
         margin: 0 auto;
