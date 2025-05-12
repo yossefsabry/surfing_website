@@ -344,7 +344,8 @@ header .text_fuck {
 .about .container .imgs .img-2 {
     position: relative;
 }
-.about .container .imgs img {
+.about .container .imgs img ,
+.about .container .imgs video {
     width: calc(100%);
     box-shadow: -4px 10px 63px 6px rgba(0, 0, 0, 0.2);
     -webkit-box-shadow: -4px 10px 63px 6px rgba(0, 0, 0, 0.2);
@@ -353,22 +354,25 @@ header .text_fuck {
 .about .container .imgs .img-2 {
     position: relative;
     transform: translate(-60px, 60px);
+    min-height: 400px;
 }
-.about .container .imgs .img-2 iframe ,
+
 .about .container .imgs .img-2 img {
     width: calc(100% + 60px);
+    min-width: 500px;
 }
-.about .container .imgs .img-2::after {
-    font-family: "Font Awesome 5 Free";
-    content: "\f144";
-    font-size: calc(20px + 2vw);
-    color: white;
-    cursor: pointer;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-}
+/* .about .container .imgs .img-2::after { */
+/*     font-family: "Font Awesome 5 Free"; */
+/*     content: "\f144"; */
+/*     font-size: calc(20px + 2vw); */
+/*     color: white; */
+/*     cursor: pointer; */
+/*     position: absolute; */
+/*     left: 50%; */
+/*     top: 50%; */
+/*     transform: translate(-50%, -50%); */
+/* } */
+
 .about .container .info {
     position: relative;
     transform: translate(-350px, -180px);
@@ -399,7 +403,8 @@ header .text_fuck {
     .about .container .imgs .img-2 {
         transform: translate(0px, 0px);
     }
-    .about .container .imgs .img-2 img {
+    .about .container .imgs .img-2 img ,
+    .about .container .imgs .img-2 video {
         width: calc(100%);
     }
 }

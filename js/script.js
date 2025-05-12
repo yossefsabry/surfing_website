@@ -109,7 +109,7 @@ const boxs = document.querySelectorAll(".box");
 
 window.addEventListener("scroll", checkBox);
 function checkBox() {
-    const triggeBtton = (window.innerHeight / 5) * 4;
+    const triggeBtton = (window.innerHeight / 4) * 4;
     boxs.forEach((box) => {
         const boxTop = box.getBoundingClientRect().top;
         if (boxTop < triggeBtton) {
