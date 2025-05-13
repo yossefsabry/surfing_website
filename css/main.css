@@ -202,6 +202,7 @@ header .text_fuck {
     box-shadow: -79px 0px 70px -22px rgba(232, 232, 232, 1);
     margin-left: calc(-1rem + -2vw);
 }
+
 /* next photo */
 .next {
     display: flex;
@@ -215,10 +216,11 @@ header .text_fuck {
     padding: 0;
     margin: 0;
     font-size: 16px;
+    transition: all .3s;
 }
 .next span:nth-child(3) {
     color: var(--text-color);
-    margin: 0px 5px;
+    margin: 0px 2px;
     font-size: 18px;
 }
 .next span:nth-child(4) {
@@ -229,6 +231,11 @@ header .text_fuck {
     color: var(--text-color);
     font-size: 27px;
     cursor: pointer;
+    transition: var(--main-transition);
+}
+.next svg:hover {
+    font-size: 30px;
+    color: var(--header-text);
 }
 /* start social */
 .social {

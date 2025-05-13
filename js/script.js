@@ -12,18 +12,6 @@ function checkImagesLoaded() {
     return Promise.all(imagePromises);
 }
 
-// Function to check if all iframes are loaded
-function checkIframesLoaded() {
-    const iframes = document.querySelectorAll('iframe');
-    const iframePromises = Array.from(iframes).map(iframe => {
-        return new Promise(resolve => {
-            iframe.addEventListener('load', resolve);
-            iframe.addEventListener('error', resolve); // Also resolve on error
-        });
-    });
-    return Promise.all(iframePromises);
-}
-
 // Function to wait for fonts to load (if you're using custom fonts)
 function checkFontsLoaded() {
     if (!document.fonts) return Promise.resolve();
@@ -34,7 +22,6 @@ function checkFontsLoaded() {
 Promise.all([
     new Promise(resolve => window.addEventListener('load', resolve)),
     checkImagesLoaded(),
-    checkIframesLoaded(),
     checkFontsLoaded()
 ]).then(() => {
         // Hide loading screen with fade out
@@ -87,16 +74,16 @@ btn.onclick = () => {
 // };
 
 // show cursor and go to top
-
 btnTop = document.querySelector(".top");
 window.addEventListener("scroll", checkTop);
 function checkTop() {
     if (window.scrollY >= 200) {
-        btnTop.style.display = "block";
+        btnTop.style.transform = "scale(1)";
     } else {
-        btnTop.style.display = "none";
+        btnTop.style.transform = "scale(0.0)";
     }
 }
+
 btnTop.onclick = () => {
     window.scrollTo({
         top: 0,
@@ -123,15 +110,42 @@ function checkBox() {
 // change hero image every three second
 var images = ["hero1.jpg", "hero2.jpg", "hero3.jpg"]; // Array of image URLs
 var currentIndex = 0;
+let span_number = document.querySelector(".span_number");
+let imageElement = document.getElementById("image");
 
 function changeImage() {
-    var imageElement = document.getElementById("image");
     imageElement.src = `assets_website` + "\\" + images[currentIndex];
+    span_number.innerHTML = currentIndex + 1;
     currentIndex++;
     if (currentIndex >= images.length) {
         // Check against the length of the images array
         currentIndex = 0;
     }
 }
-setInterval(changeImage, 3000); // Change image every three seconds
+setInterval(changeImage, 5000); // Change image every three seconds
+
+const next_button = document.getElementById("right_button");
+const prev_button = document.getElementById("left_button");
+
+function change_img_by_button(next) {
+    if (next == true) {
+        imageElement.src = `assets_website` + "\\" + images[currentIndex];
+        currentIndex++;
+    } else {
+        imageElement.src = `assets_website` + "\\" + images[currentIndex];
+        currentIndex--;
+    }
+    if (currentIndex >= images.length) {
+        // Check against the length of the images array
+        currentIndex = 0;
+    }
+    if (currentIndex < 0) {
+        currentIndex = images.length - 1;
+    }
+    span_number.innerHTML = currentIndex + 1;
+}
+
+prev_button.addEventListener("click", () => change_img_by_button())
+next_button.addEventListener("click", () => change_img_by_button(true))
+
 
