@@ -1,6 +1,6 @@
 # netlify.toml
 [build]
-  publish = "assets_website" # Adjust this to your folder
+  publish = "." # Adjust this to your folder
 
 [[redirects]]
   from = "/*"
