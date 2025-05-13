@@ -1,49 +1,59 @@
 
-// Function to check if all images are loaded
-function checkImagesLoaded() {
-    const images = document.querySelectorAll('img');
-    const imagePromises = Array.from(images).map(img => {
-        if (img.complete) return Promise.resolve();
-        return new Promise(resolve => {
-            img.addEventListener('load', resolve);
-            img.addEventListener('error', resolve); // Also resolve on error
+
+// Function to check if images are loaded with a timeout fallback
+function checkImagesLoaded(timeout = 3000) {
+    return new Promise(resolve => {
+        const images = document.querySelectorAll('img');
+        const imagePromises = Array.from(images).map(img => {
+            if (img.complete) return Promise.resolve();
+            return new Promise(innerResolve => {
+                img.addEventListener('load', innerResolve, { once: true });
+                img.addEventListener('error', innerResolve, { once: true });
+            });
         });
+        Promise.race([
+            Promise.all(imagePromises),
+            new Promise(r => setTimeout(r, timeout)) // Timeout after 3 seconds
+        ]).then(resolve);
     });
-    return Promise.all(imagePromises);
 }
 
-// Function to wait for fonts to load (if you're using custom fonts)
-function checkFontsLoaded() {
+// Function to wait for fonts to load with a timeout fallback
+function checkFontsLoaded(timeout = 3000) {
     if (!document.fonts) return Promise.resolve();
-    return document.fonts.ready;
+    return Promise.race([
+        document.fonts.ready,
+        new Promise(resolve => setTimeout(resolve, timeout)) // Timeout after 3 seconds
+    ]);
 }
 
-// Wait for everything to load
+// Wait for critical parts to load with a max 3s timeout
 Promise.all([
     new Promise(resolve => window.addEventListener('load', resolve)),
     checkImagesLoaded(),
     checkFontsLoaded()
 ]).then(() => {
-        // Hide loading screen with fade out
-        const loadingScreen = document.getElementById('loading-screen');
-        loadingScreen.style.opacity = '0';
+    const loadingScreen = document.getElementById('loading-screen');
+    loadingScreen.style.transition = 'opacity 0.3s ease'; // Faster fade-out
+    loadingScreen.style.opacity = '0';
 
-        // Remove loading screen after fade out
-        setTimeout(() => {
-            loadingScreen.style.display = 'none';
+    // Remove loading screen after fade out
+    setTimeout(() => {
+        loadingScreen.style.display = 'none';
 
-            // Show all content (alternative to setting display: block)
-            document.querySelectorAll('body > *').forEach(element => {
-                element.style.visibility = 'visible';
-                element.style.opacity = '1';
-            });
+        // Show all content
+        document.querySelectorAll('body > *').forEach(element => {
+            element.style.visibility = 'visible';
+            element.style.opacity = '1';
+        });
 
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth",
-            });
-        }, 500);
-    });
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
+    }, 300); // Match fade-out duration
+});
+
 
 // Initial setup - hide all content while loading
 document.querySelectorAll('body > *').forEach(element => {
